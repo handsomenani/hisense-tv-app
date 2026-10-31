@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hisense TV</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #10131c;
+  color: white;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  padding: 55px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.clock {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.date {
+  color: #aeb6c8;
+  font-size: 17px;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.welcome {
+  margin-top: 105px;
+}
+
+.welcome h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.welcome p {
+  color: #aeb6c8;
+  font-size: 20px;
+}
+
+.apps {
+  display: flex;
+  gap: 25px;
+  margin-top: 55px;
+}
+
+.app {
+  display: block;
+  width: 240px;
+  padding: 35px 20px;
+  border-radius: 18px;
+  background: #202638;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border: 3px solid transparent;
+  transition: 0.2s;
+}
+
+.app:focus,
+.app:hover {
+  outline: none;
+  border-color: white;
+  background: #303b55;
+}
+
+.app .symbol {
+  font-size: 48px;
+  margin-bottom: 18px;
+}
+
+.app h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 35px;
+  left: 55px;
+  color: #778198;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="logo">MY HISENSE</div>
+  <div>
+    <div class="clock" id="clock">--:--</div>
+    <div class="date" id="date">Caricamento...</div>
+  </div>
+</div>
+
+<div class="welcome">
+  <h1>Benvenuto.</h1>
+  <p>Il tuo spazio, il tuo intrattenimento.</p>
+</div>
+
+<div class="apps">
+
+  <a class="app" href="https://open.spotify.com/">
+    <div class="symbol">♫</div>
+    <h2>Spotify</h2>
+  </a>
+
+  <a class="app" href="https://www.nowtv.it/">
+    <div class="symbol">▶</div>
+    <h2>NOW</h2>
+  </a>
+
+</div>
+
+<div class="footer">
+  HISENSE TV EXPERIENCE
+</div>
+
+<script>
+function updateClock() {
+  var now = new Date();
+
+  var hours = String(now.getHours()).padStart(2, "0");
+  var minutes = String(now.getMinutes()).padStart(2, "0");
+
+  document.getElementById("clock").innerHTML =
+    hours + ":" + minutes;
+
+  document.getElementById("date").innerHTML =
+    now.toLocaleDateString("it-IT", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
